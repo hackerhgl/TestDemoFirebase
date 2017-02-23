@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FireBase</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form">
+        <div class="form-group">
+          <h1>FireBase Upload Form</h1>
+        </div>
+        <div class="form-group">
+          <div class="progress">
+            <div id="uploader" class="progress-bar progress-bar-warning progress-bar-striped active" style="width:1%">0</div>
+          </div>
+          <input type="file" value="upload" id="file" />
+        </div>
+      </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/upload.js"></script>
+  </body>
+</html>

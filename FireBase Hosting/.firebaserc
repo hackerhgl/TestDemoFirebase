@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "helloworld-9b220",
+    "stage": "helloworld-9b220"
+  }
+}
