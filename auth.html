@@ -21,15 +21,26 @@
         <div class="form-group">
           <div class="btn btn-default" id="logIn">Log In</div>
           <div class="btn btn-primary" id="signUp">Sign Up</div>
+          <div class="btn btn-primary" id="userSign">UserName</div>
+          <div class="btn btn-primary" id="googleSign">Google Id</div>
+          <div class="btn btn-primary" id="facebookSign">Facebook</div>
           <div class="btn btn-danger pull-right hide" id="logOut">Log Out</div>
         </div>
       </form>
-    </div>
-    <div class="container">
-      <div id="role"></div>
-    </div>
+      <div class="messages">
+        <div class="list-groups" id="msgid"></div>
+        <br>
+        <input type="text" placeholder="Message" class="form-control" id="mMessage" />
+        <br>
+        <input type="text" placeholder="User Id" class="form-control" id="mUid" />
+        <br>
+        <input type="button" class="btn btn-primary" id="smBtn" value="Send Message"/>
+      </div>
+      <div class="container">
+        <h1 id="role"></h1>
+      </div>
+      </div>
     <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-    <script src="js/lodash.js"></script>
     <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
   </body>
