@@ -9,6 +9,9 @@ let msgid = id("msgid");
 let smBtn = id("smBtn");
 let googleSign = id("googleSign");
 let facebookSign = id("facebookSign");
+let linkGoogle = id("linkGoogle");
+let linkFacebook = id("linkFacebook");
+let linkEmail = id("linkEmail");
 let messages = {};
 login.addEventListener('click', e => {
   let emailTxt = email.value;
@@ -48,6 +51,30 @@ googleSign.addEventListener('click', e => {
 facebookSign.addEventListener('click', e => {
   signUpWithFacebook();
 })
+linkGoogle.addEventListener('click', e => {
+  let provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+  provider.addScope('https://www.googleapis.com/auth/plus.login');
+  provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+  provider.addScope('https://www.googleapis.com/auth/plus.me');
+  firebase.auth().signInWithPopup(provider).then(v => {
+    console.log('google signin');
+    console.log(v);
+  }).catch(err => {
+    console.log(err);
+  });
+});
+linkEmail.addEventListener('click', e=> {
+  let emailTxt = email.value;
+  let passTxt = pass.value;
+  let credential =  firebase.auth.EmailAuthProvider.credential(emailTxt, passTxt);
+  firebase.auth().currentUser.link(credential).then(v => {
+    console.log(v);
+  }).catch( e => {
+    console.log(e);
+  });
+})
+linkFacebook.addEventListener('click', e => {});
 logout.addEventListener('click', e => {
   firebase.auth().signOut();
 })
@@ -97,8 +124,14 @@ function signUpWithFacebook() {
   provider.addScope('user_birthday');
   provider.addScope('public_profile');
   provider.addScope('email');
-  firebase.auth().signInWithPopup(provider).then( v => {
-    console.log(v);
+  firebase.auth().signInWithPopup(provider).then(() => {}).catch(err => {
+    firebase.auth().currentUser.link(err.credential).then(c => {
+      console.log('link succcess');
+      console.log(c);
+    }).catch(e => {
+      console.log('link failed');
+      console.log(e);
+    })
   })
 }
 function signInWithUserName(username, pass) {
